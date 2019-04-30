@@ -114,6 +114,7 @@ azure-iot-sdk-c/provisioning_client/src/prov_security_factory.o \
 azure-iot-sdk-c/provisioning_client/src/prov_device_ll_client.o \
 azure-iot-sdk-c/provisioning_client/src/iothub_security_factory.o \
 azure-iot-sdk-c/provisioning_client/adapters/hsm_client_data.o \
+azure-iot-sdk-c/provisioning_client/adapters/hsm_client_key.o \
 azure-iot-sdk-c/provisioning_client/adapters/hsm_client_tpm.o \
 azure-iot-sdk-c/provisioning_client/src/prov_auth_client.o \
 azure-iot-sdk-c/provisioning_client/deps/utpm/src/tpm_codec.o \
@@ -159,8 +160,9 @@ ifndef CONFIG_TARGET_PLATFORM_ESP8266
 COMPONENT_SRCDIRS += azure-iot-sdk-c/certs
 endif
 
-CFLAGS += -Wno-unused-function -Wno-missing-braces -Wno-missing-field-initializers -DHSM_TYPE_X509 -DHSM_TYPE_SAS_TOKEN
+#CFLAGS += -Wno-unused-function -Wno-missing-braces -Wno-missing-field-initializers -DHSM_TYPE_X509 -DHSM_TYPE_SAS_TOKEN
+CFLAGS += -Wno-unused-function -Wno-missing-braces -Wno-missing-field-initializers -DHSM_TYPE_SYMM_KEY -DHSM_TYPE_SAS_TOKEN
 
 ifdef CONFIG_DEVICE_COMMON_NAME
-CFLAGS += -DUSE_PROV_MODULE
+CFLAGS += -DUSE_PROV_MODULE 
 endif
